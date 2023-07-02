@@ -18,6 +18,8 @@ public class Tagging : MonoBehaviour
 
         // Calculate the direction towards the player
         Vector3 direction = target.position - transform.position;
+        Vector3 viewPoint = new Vector3(0, target.transform.position.y, 0);
+        transform.LookAt(viewPoint);
 
         // Normalize the direction vector
         direction.Normalize();

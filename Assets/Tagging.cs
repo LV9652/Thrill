@@ -7,6 +7,9 @@ public class Tagging : MonoBehaviour
     public Transform target; // Reference to the player's transform
     public float moveSpeed = 5f; // Speed at which the object chases the player
 
+    public GameObject player;
+    public GameObject canvas;
+
     private void Update()
     {
         // Check if the target (player) is available
@@ -29,5 +32,14 @@ public class Tagging : MonoBehaviour
 
         // Move the object towards the player
         transform.position += movement;
+    }
+
+    void OnCollisionEnter(Collision col) {
+        if (col.collider.name == "Capsule") {
+            Debug.Log("You died!");
+            canvas.SetActive(true);
+        }
+
+        Debug.Log(col.collider.name);
     }
 }
